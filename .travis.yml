@@ -1,0 +1,19 @@
+branches:
+  only:
+    - master
+    - develop
+
+language: node_js
+
+node_js:
+  - 12
+
+install:
+  - yarn install --frozen-lockfile
+
+script:
+  - yarn test --coverage
+  - yarn prepare
+
+after_script:
+  - bash <(curl -s https://codecov.io/bash)
